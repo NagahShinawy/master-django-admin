@@ -1,4 +1,5 @@
 from django.db import models
+from .choices import DeveloperLevel
 
 
 class Task(models.Model):
@@ -11,6 +12,7 @@ class Task(models.Model):
 
 class Developer(models.Model):
     name = models.CharField(max_length=256)
+    level = models.CharField(max_length=8, choices=DeveloperLevel.choices, default=DeveloperLevel.SENIOR)
 
     def __str__(self):
         return self.name
