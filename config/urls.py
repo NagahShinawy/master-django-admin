@@ -1,4 +1,4 @@
-"""veryacademy URL Configuration
+"""config URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from apps.materadmin.admin import developer_site, task_site
+from apps.core.views.dashboard import dashboard
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('developers-admin/', developer_site.urls),
-    path('tasks-admin/', task_site.urls),
+    path("admin/", admin.site.urls),
+    path("", dashboard, name="dashboard"),
+    path("developers_admin/", developer_site.urls),
+    path("tasks_admin/", task_site.urls),
 ]
