@@ -13,10 +13,17 @@ class Task(models.Model):
 
 
 class Developer(models.Model):
-    name = models.CharField(max_length=256)
+    name = models.CharField(max_length=256, verbose_name="Developer Name")
     level = models.CharField(
-        max_length=8, choices=DeveloperLevels.choices, default=DeveloperLevels.SENIOR
+        max_length=8, choices=DeveloperLevels.choices, default=DeveloperLevels.SENIOR,
+        verbose_name="Exp Level",
     )
+    salary = models.IntegerField(null=True, blank=True, verbose_name="Dev Salary")
 
     def __str__(self):
         return self.name
+
+
+class Tool(models.Model):
+    name = models.CharField(max_length=256)
+    desc = models.TextField(null=True, blank=True)
